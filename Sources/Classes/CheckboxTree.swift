@@ -1,6 +1,6 @@
 //
-//  CheckboxList.swift
-//  CheckboxList
+//  CheckboxTree.swift
+//  CheckboxTree
 //
 //  Created by mac on 09.11.2021.
 //
@@ -9,7 +9,7 @@ import UIKit
 
 //struct CheckboxList
 
-public class CheckboxList: UIView {
+public class CheckboxTree: UIView {
 
     // MARK: - Public properties
 
@@ -19,7 +19,6 @@ public class CheckboxList: UIView {
             setupStackView()
         }
     }
-
 
 
     // MARK: - Private properties
