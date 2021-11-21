@@ -11,8 +11,9 @@
 		0430A5BE2739EA35007FE50C /* CheckboxListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430A5BD2739EA35007FE50C /* CheckboxListTests.swift */; };
 		0430A5C82739EB8F007FE50C /* CheckboxList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430A5C72739EB8F007FE50C /* CheckboxList.swift */; };
 		0430A607273AF3BD007FE50C /* CheckboxItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430A606273AF3BD007FE50C /* CheckboxItemView.swift */; };
-		0430A60A273B1ABB007FE50C /* CheckboxAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0430A609273B1ABB007FE50C /* CheckboxAssets.xcassets */; };
 		0430A60D273B2C9B007FE50C /* CheckboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430A60C273B2C9B007FE50C /* CheckboxItem.swift */; };
+		0430A613273DC9D7007FE50C /* CheckboxAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0430A609273B1ABB007FE50C /* CheckboxAssets.xcassets */; };
+		0430A61527413CCF007FE50C /* CheckboxImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430A61427413CCF007FE50C /* CheckboxImageProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		0430A606273AF3BD007FE50C /* CheckboxItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxItemView.swift; sourceTree = "<group>"; };
 		0430A609273B1ABB007FE50C /* CheckboxAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAssets.xcassets; sourceTree = "<group>"; };
 		0430A60C273B2C9B007FE50C /* CheckboxItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxItem.swift; sourceTree = "<group>"; };
+		0430A61427413CCF007FE50C /* CheckboxImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxImageProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				0430A5C72739EB8F007FE50C /* CheckboxList.swift */,
 				0430A606273AF3BD007FE50C /* CheckboxItemView.swift */,
 				0430A60C273B2C9B007FE50C /* CheckboxItem.swift */,
+				0430A61427413CCF007FE50C /* CheckboxImageProvider.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -207,7 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0430A60A273B1ABB007FE50C /* CheckboxAssets.xcassets in Resources */,
+				0430A613273DC9D7007FE50C /* CheckboxAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +231,7 @@
 				0430A607273AF3BD007FE50C /* CheckboxItemView.swift in Sources */,
 				0430A60D273B2C9B007FE50C /* CheckboxItem.swift in Sources */,
 				0430A5C82739EB8F007FE50C /* CheckboxList.swift in Sources */,
+				0430A61527413CCF007FE50C /* CheckboxImageProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
