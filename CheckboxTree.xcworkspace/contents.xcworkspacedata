@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Demo/CheckboxList-Demo.xcodeproj">
+      location = "group:Demo/CheckboxTree-Demo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:CheckboxList.xcodeproj">
+      location = "container:CheckboxTree.xcodeproj">
    </FileRef>
 </Workspace>

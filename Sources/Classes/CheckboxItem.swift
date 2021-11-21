@@ -1,13 +1,13 @@
 //
 //  CheckboxItem.swift
-//  CheckboxList
+//  CheckboxTree
 //
 //  Created by mac on 10.11.2021.
 //
 
-import Foundation
 import UIKit
 
+/// Checkbox item model
 public class CheckboxItem {
 
     // MARK: - Enum
@@ -17,27 +17,34 @@ public class CheckboxItem {
         case single
     }
 
+    public enum ItemState {
+        case on
+        case off
+        case mixed
+    }
+
     // MARK: - Public properties
 
-    /// Заголовок
+    /// Title text
     public var title: String
 
-    /// Подзаголовок
+    /// Subtitle text
     public var subtitle: String?
 
-    /// Тип элемента (Группа или единичный)
+    /// Item type - single / group
     public var type: ItemType {
         return children.isEmpty ? .single : .group
     }
 
-    /// Элементы внутри группы
+    /// Child items
     public var children: [CheckboxItem] = []
 
+    /// Is group collapsed. (Applicable only to items with type *group*)
     public var isGroupCollapsed: Bool
 
     private var _isSelected: Bool
 
-    /// Доступен ли элемент для выбора
+    /// Is item selected. (checkmark is ON if *true*)
     public var isSelected: Bool {
         get {
             if type == .group {
@@ -55,7 +62,7 @@ public class CheckboxItem {
         }
     }
 
-    /// Состояние выбора
+    /// State of selection. Can be *mixed* for group item if it contains both selected and unselected.
     public var selectionState: ItemState {
         if type == .group {
 
@@ -98,24 +105,5 @@ public class CheckboxItem {
         self._isSelected = isSelected
         self.children = children
         self.isGroupCollapsed = groupCollapsed
-    }
-}
-
-extension CheckboxItem {
-    public enum ItemState {
-        case on
-        case off
-        case mixed
-
-        func image() -> UIImage? {
-            switch self {
-            case .on:
-                return CheckboxImageProvider.checkboxOn()
-            case .off:
-                return CheckboxImageProvider.checkboxOff()
-            case .mixed:
-                return CheckboxImageProvider.checkboxMixed()
-            }
-        }
     }
 }

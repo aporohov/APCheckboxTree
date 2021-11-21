@@ -1,44 +1,30 @@
 //
 //  CheckboxItemView.swift
-//  CheckboxList
+//  CheckboxTree
 //
 //  Created by mac on 09.11.2021.
 //
 
 import UIKit
 
+/// Resulting checkbox tree is a stackView filled with this views
 class CheckboxItemView: UIView {
-
-    // MARK: - Constants
-
-    private enum Constants {
-//        static var minHeight: CGFloat = 44
-//        static var iconSide: CGFloat = 24
-//        static var titleLeftOffset: CGFloat = 12
-    }
 
     // MARK: - Properties
 
-    let groupArrowButton: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(CheckboxImageProvider.groupArrow(), for: .normal)
-        button.addTarget(self, action: #selector(collapseIconTapped(gestureRecognizer:)), for: .touchUpInside)
-        return button
-    }()
+    var style: CheckboxTreeStyle
 
-    let selectionImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    weak var groupArrowButton: UIButton?
+    weak var selectionImageView: UIImageView?
 
     var tapAction: (() -> ())?
     var collapseAction: (() -> ())?
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(style: CheckboxTreeStyle) {
+        self.style = style
+        super.init(frame: .zero)
 
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(itemTapped(gestureRecognizer:)))
         addGestureRecognizer(gestureRecognizer)
@@ -48,7 +34,7 @@ class CheckboxItemView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Action
+    // MARK: - Actions
 
     @objc func itemTapped(gestureRecognizer: UITapGestureRecognizer) {
         tapAction?()
@@ -61,7 +47,18 @@ class CheckboxItemView: UIView {
     // MARK: - Methods
 
     func transformGroupArrow(isCollapsed: Bool) {
-        groupArrowButton.transform = isCollapsed ? .identity : .identity.rotated(by: .pi/2)
+        groupArrowButton?.transform = isCollapsed ? .identity : .identity.rotated(by: .pi/2)
+    }
+
+    func updateSelectionImage(item: CheckboxItem) {
+        switch item.selectionState {
+        case .on:
+            selectionImageView?.image = style.images.checkboxOn
+        case .off:
+            selectionImageView?.image = style.images.checkboxOff
+        case .mixed:
+            selectionImageView?.image = style.images.checkboxMixed
+        }
     }
 
     func setupView(item: CheckboxItem, level: Int) {
@@ -73,7 +70,7 @@ class CheckboxItemView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.spacing = 8
+        stackView.spacing = style.itemViewStyle.elementsSpacing
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
@@ -86,25 +83,76 @@ class CheckboxItemView: UIView {
         ])
 
         for _ in 0..<level {
-            arrangeEmptyView(in: stackView)
+            arrangeLevelEmptyView(in: stackView)
+        }
+
+        addGroupArrowView(in: stackView, item: item)
+        addSelectionImageView(in: stackView, item: item)
+        addTitleView(in: stackView, item: item)
+
+        stackView.addArrangedSubview(UIView())
+
+        heightAnchor.constraint(greaterThanOrEqualToConstant: style.itemViewStyle.minHeight).isActive = true
+    }
+
+    // MARK: - Arranged views
+
+    func arrangeLevelEmptyView(in stackView: UIStackView) {
+        let emptyView = UIView()
+        NSLayoutConstraint.activate([
+            emptyView.widthAnchor.constraint(equalToConstant: style.itemViewStyle.levelBoxSize.width),
+            emptyView.heightAnchor.constraint(equalToConstant: style.itemViewStyle.levelBoxSize.height)
+        ])
+        stackView.addArrangedSubview(emptyView)
+    }
+
+    func addGroupArrowView(in stackView: UIStackView, item: CheckboxItem) {
+
+        if style.isCollapsingAvailable == false {
+            return
         }
 
         if item.type == .group {
-            stackView.addArrangedSubview(groupArrowButton)
+            let button = UIButton()
+            button.setBackgroundImage(style.images.groupArrow, for: .normal)
+            button.addTarget(self, action: #selector(collapseIconTapped(gestureRecognizer:)), for: .touchUpInside)
+
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalToConstant: style.itemViewStyle.levelBoxSize.width),
+                button.heightAnchor.constraint(equalToConstant: style.itemViewStyle.levelBoxSize.height)
+            ])
+
+            stackView.addArrangedSubview(button)
+            groupArrowButton = button
+
             transformGroupArrow(isCollapsed: item.isGroupCollapsed)
         } else {
-            arrangeEmptyView(in: stackView)
+            arrangeLevelEmptyView(in: stackView)
         }
+    }
 
-        selectionImageView.image = item.selectionState.image()
-        stackView.addArrangedSubview(selectionImageView)
+    func addSelectionImageView(in stackView: UIStackView, item: CheckboxItem) {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
 
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: style.itemViewStyle.levelBoxSize.width),
+            imageView.heightAnchor.constraint(equalToConstant: style.itemViewStyle.levelBoxSize.height)
+        ])
+
+        stackView.addArrangedSubview(imageView)
+
+        selectionImageView = imageView
+        updateSelectionImage(item: item)
+    }
+
+    func addTitleView(in stackView: UIStackView, item: CheckboxItem) {
         let titleStackView = UIStackView()
         titleStackView.axis = .vertical
 
         let titleLabel = UILabel(frame: CGRect.zero)
-        titleLabel.font = .systemFont(ofSize: 17, weight: .regular)
-        titleLabel.textColor = .label
+        titleLabel.font = style.itemViewStyle.titleFont
+        titleLabel.textColor = style.itemViewStyle.titleColor
         titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 0
         titleLabel.text = item.title
@@ -113,8 +161,8 @@ class CheckboxItemView: UIView {
 
         if let subtitle = item.subtitle {
             let subtitleLabel = UILabel(frame: CGRect.zero)
-            subtitleLabel.font = .systemFont(ofSize: 14, weight: .regular)
-            subtitleLabel.textColor = .secondaryLabel
+            subtitleLabel.font = style.itemViewStyle.subtitleFont
+            subtitleLabel.textColor = style.itemViewStyle.subtitleColor
             subtitleLabel.textAlignment = .left
             subtitleLabel.numberOfLines = 0
             subtitleLabel.text = subtitle
@@ -123,18 +171,6 @@ class CheckboxItemView: UIView {
         }
 
         stackView.addArrangedSubview(titleStackView)
-        stackView.addArrangedSubview(UIView())
-
-        heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
-    }
-
-    func arrangeEmptyView(in stackView: UIStackView) {
-        let emptyView = UIView()
-        NSLayoutConstraint.activate([
-            emptyView.heightAnchor.constraint(equalToConstant: 24),
-            emptyView.widthAnchor.constraint(equalToConstant: 24)
-        ])
-        stackView.addArrangedSubview(emptyView)
     }
 }
 
