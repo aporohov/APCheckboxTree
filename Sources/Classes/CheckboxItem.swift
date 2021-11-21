@@ -33,7 +33,7 @@ public class CheckboxItem {
     /// Элементы внутри группы
     public var children: [CheckboxItem] = []
 
-    public var groupCollapsed: Bool
+    public var isGroupCollapsed: Bool
 
     private var _isSelected: Bool
 
@@ -41,7 +41,7 @@ public class CheckboxItem {
     public var isSelected: Bool {
         get {
             if type == .group {
-                return !children.contains{ !$0.isSelected }
+                return selectionState == .on
             } else {
                 return _isSelected
             }
@@ -58,14 +58,24 @@ public class CheckboxItem {
     /// Состояние выбора
     public var selectionState: ItemState {
         if type == .group {
-            let hasSelectedChild = children.contains{ $0.isSelected }
-            let hasUnselectedChild = children.contains{ !$0.isSelected }
+
+            if children.isEmpty {
+                return .off
+            }
+
+            let hasMixedChild = children.contains{ $0.selectionState == .mixed }
+            if hasMixedChild {
+                return .mixed
+            }
+
+            let hasSelectedChild = children.contains{ $0.selectionState == .on }
+            let hasUnselectedChild = children.contains{ $0.selectionState == .off }
 
             if hasSelectedChild && !hasUnselectedChild {
                 return .on
             } else if !hasSelectedChild && hasUnselectedChild {
                 return .off
-            } else if hasSelectedChild && hasUnselectedChild {
+            } else {
                 return .mixed
             }
         }
@@ -87,7 +97,7 @@ public class CheckboxItem {
         self.subtitle = subtitle
         self._isSelected = isSelected
         self.children = children
-        self.groupCollapsed = groupCollapsed
+        self.isGroupCollapsed = groupCollapsed
     }
 }
 

@@ -13,7 +13,7 @@
 		0430A5DD2739ED18007FE50C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0430A5DB2739ED18007FE50C /* Main.storyboard */; };
 		0430A5DF2739ED1A007FE50C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0430A5DE2739ED1A007FE50C /* Assets.xcassets */; };
 		0430A5E22739ED1A007FE50C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0430A5E02739ED1A007FE50C /* LaunchScreen.storyboard */; };
-		0430A5F12739EDE9007FE50C /* CheckboxList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0430A5F02739EDE9007FE50C /* CheckboxList.framework */; };
+		0430A612273DC430007FE50C /* CheckboxList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0430A611273DC430007FE50C /* CheckboxList.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		0430A5DE2739ED1A007FE50C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0430A5E12739ED1A007FE50C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0430A5E32739ED1A007FE50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0430A5F02739EDE9007FE50C /* CheckboxList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CheckboxList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0430A611273DC430007FE50C /* CheckboxList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CheckboxList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0430A5F12739EDE9007FE50C /* CheckboxList.framework in Frameworks */,
+				0430A612273DC430007FE50C /* CheckboxList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +74,7 @@
 		0430A5EF2739EDE8007FE50C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0430A5F02739EDE9007FE50C /* CheckboxList.framework */,
+				0430A611273DC430007FE50C /* CheckboxList.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

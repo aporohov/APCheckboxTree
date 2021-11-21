@@ -19,28 +19,21 @@ class CheckboxItemView: UIView {
 
     // MARK: - Properties
 
-    var itemViews: [CheckboxItemView]?
+    let groupArrowButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(CheckboxImageProvider.groupArrow(), for: .normal)
+        button.addTarget(self, action: #selector(collapseIconTapped(gestureRecognizer:)), for: .touchUpInside)
+        return button
+    }()
 
-//    private let imageView: UIImageView = {
-//        let imageView = UIImageView(frame: CGRect.zero)
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.clipsToBounds = true
-//        return imageView
-//    }()
-//
-//    private let titleLabel: UILabel = {
-//        let label = UILabel()
-//        label.textAlignment = .left
-//        label.numberOfLines = 0
-//        return label
-//    }()
-//
-//    private lazy var subtitleLabel: UILabel = {
-//        let label = UILabel()
-//        label.textAlignment = .left
-//        label.numberOfLines = 0
-//        return label
-//    }()
+    let selectionImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
+    var tapAction: (() -> ())?
+    var collapseAction: (() -> ())?
 
     // MARK: - Init
 
@@ -55,18 +48,6 @@ class CheckboxItemView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Lifecycle
-
-//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-//        guard let item = item, item.interactionAvailable else {
-//            return nil
-//        }
-//        return super.hitTest(point, with: event)
-//    }
-
-    var tapAction: (() -> ())?
-    var collapseAction: (() -> ())?
-
     // MARK: - Action
 
     @objc func itemTapped(gestureRecognizer: UITapGestureRecognizer) {
@@ -79,7 +60,11 @@ class CheckboxItemView: UIView {
 
     // MARK: - Methods
 
-    func setupView(item: CheckboxItem, leftOffset: CGFloat) {
+    func transformGroupArrow(isCollapsed: Bool) {
+        groupArrowButton.transform = isCollapsed ? .identity : .identity.rotated(by: .pi/2)
+    }
+
+    func setupView(item: CheckboxItem, level: Int) {
 
         for subview in subviews {
             subview.removeFromSuperview()
@@ -88,55 +73,31 @@ class CheckboxItemView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
+        stackView.spacing = 8
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leftOffset),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
-        if item.type == .group {
-            let button = UIButton()
-            button.setTitle("ass", for: .normal)
-            button.setTitleColor(.secondaryLabel, for: .normal)
-
-            button.addTarget(self, action: #selector(collapseIconTapped(gestureRecognizer:)), for: .touchUpInside)
-            stackView.addArrangedSubview(button)
+        for _ in 0..<level {
+            arrangeEmptyView(in: stackView)
         }
 
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = item.selectionState.image()
+        if item.type == .group {
+            stackView.addArrangedSubview(groupArrowButton)
+            transformGroupArrow(isCollapsed: item.isGroupCollapsed)
+        } else {
+            arrangeEmptyView(in: stackView)
+        }
 
-        let imageContainerView = UIView()
-        imageContainerView.clipsToBounds = true
-
-        imageContainerView.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: imageContainerView.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: imageContainerView.centerYAnchor)
-        ])
-
-        let q = imageContainerView.widthAnchor.constraint(equalToConstant: 24)
-        let w = imageContainerView.heightAnchor.constraint(equalToConstant: 24)
-
-        q.isActive = true
-        w.isActive = true
-
-        q.priority = .defaultLow
-        w.priority = .defaultLow
-
-        let a = heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
-        a.isActive = true
-        a.priority = .defaultLow
-
-        stackView.addArrangedSubview(imageContainerView)
+        selectionImageView.image = item.selectionState.image()
+        stackView.addArrangedSubview(selectionImageView)
 
         let titleStackView = UIStackView()
         titleStackView.axis = .vertical
@@ -163,6 +124,17 @@ class CheckboxItemView: UIView {
 
         stackView.addArrangedSubview(titleStackView)
         stackView.addArrangedSubview(UIView())
+
+        heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
+    }
+
+    func arrangeEmptyView(in stackView: UIStackView) {
+        let emptyView = UIView()
+        NSLayoutConstraint.activate([
+            emptyView.heightAnchor.constraint(equalToConstant: 24),
+            emptyView.widthAnchor.constraint(equalToConstant: 24)
+        ])
+        stackView.addArrangedSubview(emptyView)
     }
 }
 
