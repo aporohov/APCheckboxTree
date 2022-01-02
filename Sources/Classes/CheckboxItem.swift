@@ -42,6 +42,21 @@ public class CheckboxItem {
     /// Is group collapsed. (Applicable only to items with type *group*)
     public var isGroupCollapsed: Bool
 
+    private var _isEnabled: Bool
+
+    public var isEnabled: Bool {
+        get {
+            return _isEnabled
+        }
+        set {
+            _isEnabled = newValue
+
+            for child in children {
+                child.isEnabled = newValue
+            }
+        }
+    }
+
     private var _isSelected: Bool
 
     /// Is item selected. (checkmark is ON if *true*)
@@ -54,6 +69,10 @@ public class CheckboxItem {
             }
         }
         set {
+            if isEnabled == false {
+                return
+            }
+
             _isSelected = newValue
 
             for child in children {
@@ -92,18 +111,19 @@ public class CheckboxItem {
     // MARK: - Init
 
     public convenience init(title: String, subtitle: String? = nil, children: [CheckboxItem] = [], groupCollapsed: Bool = false) {
-        self.init(title: title, subtitle: subtitle, isSelected: false, children: children, groupCollapsed: groupCollapsed)
+        self.init(title: title, subtitle: subtitle, isSelected: false, children: children, groupCollapsed: groupCollapsed, isEnabled: true)
     }
 
     public convenience init(title: String, subtitle: String? = nil, isSelected: Bool) {
-        self.init(title: title, subtitle: subtitle, isSelected: isSelected, children: [], groupCollapsed: false)
+        self.init(title: title, subtitle: subtitle, isSelected: isSelected, children: [], groupCollapsed: false, isEnabled: true)
     }
 
-    init(title: String, subtitle: String? = nil, isSelected: Bool, children: [CheckboxItem], groupCollapsed: Bool) {
+    init(title: String, subtitle: String? = nil, isSelected: Bool, children: [CheckboxItem], groupCollapsed: Bool, isEnabled: Bool) {
         self.title = title
         self.subtitle = subtitle
         self._isSelected = isSelected
         self.children = children
         self.isGroupCollapsed = groupCollapsed
+        self._isEnabled = isEnabled
     }
 }

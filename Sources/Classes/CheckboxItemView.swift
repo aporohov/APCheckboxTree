@@ -59,6 +59,11 @@ class CheckboxItemView: UIView {
         case .mixed:
             selectionImageView?.image = style.images.checkboxMixed
         }
+
+        if !item.isEnabled {
+            selectionImageView?.image = selectionImageView?.image?.withRenderingMode(.alwaysTemplate)
+            selectionImageView?.tintColor = style.itemViewStyle.disabledStateColor
+        }
     }
 
     func setupView(item: CheckboxItem, level: Int) {
@@ -152,7 +157,7 @@ class CheckboxItemView: UIView {
 
         let titleLabel = UILabel(frame: CGRect.zero)
         titleLabel.font = style.itemViewStyle.titleFont
-        titleLabel.textColor = style.itemViewStyle.titleColor
+        titleLabel.textColor = item.isEnabled ? style.itemViewStyle.titleColor : style.itemViewStyle.disabledStateColor
         titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 0
         titleLabel.text = item.title
@@ -162,7 +167,7 @@ class CheckboxItemView: UIView {
         if let subtitle = item.subtitle {
             let subtitleLabel = UILabel(frame: CGRect.zero)
             subtitleLabel.font = style.itemViewStyle.subtitleFont
-            subtitleLabel.textColor = style.itemViewStyle.subtitleColor
+            subtitleLabel.textColor = item.isEnabled ? style.itemViewStyle.subtitleColor : style.itemViewStyle.disabledStateColor
             subtitleLabel.textAlignment = .left
             subtitleLabel.numberOfLines = 0
             subtitleLabel.text = subtitle

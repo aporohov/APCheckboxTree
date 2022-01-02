@@ -72,7 +72,21 @@ class CheckboxNode {
                 return
             }
 
-            self.item.isSelected.toggle()
+            if self.item.selectionState == .mixed {
+
+                if self.item.children.filter({ item in
+                    item.isEnabled
+                }).contains(where: { item in
+                    item.isSelected == false
+                }) {
+                    self.item.isSelected = true
+                } else {
+                    self.item.isSelected = false
+                }
+
+            } else {
+                self.item.isSelected.toggle()
+            }
 
             self.getRootNode().forEachBranchNode { node in
                 node.itemView.updateSelectionImage(item: node.item)

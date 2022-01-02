@@ -25,6 +25,7 @@ open class CheckboxTreeStyle {
         public var subtitleFont: UIFont = .systemFont(ofSize: 14, weight: .regular)
         public var titleColor: UIColor = .label
         public var subtitleColor: UIColor = .secondaryLabel
+        public var disabledStateColor: UIColor = .tertiaryLabel
     }
 
     // MARK: - Properties
