@@ -15,6 +15,8 @@
 		0430A613273DC9D7007FE50C /* CheckboxAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0430A609273B1ABB007FE50C /* CheckboxAssets.xcassets */; };
 		044E3751274ACE8F001CD148 /* CheckboxTreeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E3750274ACE8F001CD148 /* CheckboxTreeStyle.swift */; };
 		044E3753274AD290001CD148 /* CheckboxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E3752274AD290001CD148 /* CheckboxNode.swift */; };
+		049BB15127830442007EC062 /* CheckboxTreeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BB15027830442007EC062 /* CheckboxTreeDelegate.swift */; };
+		049BB15327830841007EC062 /* CheckboxItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BB15227830841007EC062 /* CheckboxItemDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 		0430A60C273B2C9B007FE50C /* CheckboxItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxItem.swift; sourceTree = "<group>"; };
 		044E3750274ACE8F001CD148 /* CheckboxTreeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxTreeStyle.swift; sourceTree = "<group>"; };
 		044E3752274AD290001CD148 /* CheckboxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxNode.swift; sourceTree = "<group>"; };
+		049BB15027830442007EC062 /* CheckboxTreeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxTreeDelegate.swift; sourceTree = "<group>"; };
+		049BB15227830841007EC062 /* CheckboxItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxItemDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,10 +110,12 @@
 			isa = PBXGroup;
 			children = (
 				0430A5C72739EB8F007FE50C /* CheckboxTree.swift */,
+				049BB15027830442007EC062 /* CheckboxTreeDelegate.swift */,
 				044E3750274ACE8F001CD148 /* CheckboxTreeStyle.swift */,
 				0430A606273AF3BD007FE50C /* CheckboxItemView.swift */,
 				044E3752274AD290001CD148 /* CheckboxNode.swift */,
 				0430A60C273B2C9B007FE50C /* CheckboxItem.swift */,
+				049BB15227830841007EC062 /* CheckboxItemDelegate.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -234,8 +240,10 @@
 				0430A607273AF3BD007FE50C /* CheckboxItemView.swift in Sources */,
 				0430A60D273B2C9B007FE50C /* CheckboxItem.swift in Sources */,
 				044E3751274ACE8F001CD148 /* CheckboxTreeStyle.swift in Sources */,
+				049BB15127830442007EC062 /* CheckboxTreeDelegate.swift in Sources */,
 				0430A5C82739EB8F007FE50C /* CheckboxTree.swift in Sources */,
 				044E3753274AD290001CD148 /* CheckboxNode.swift in Sources */,
+				049BB15327830841007EC062 /* CheckboxItemDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
