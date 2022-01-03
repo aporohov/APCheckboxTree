@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// Resulting checkbox tree is a stackView filled with this views
+/// Resulting view of checkbox tree is a stackView filled with this type of views
 class CheckboxItemView: UIView {
 
     // MARK: - Properties
@@ -113,7 +113,7 @@ class CheckboxItemView: UIView {
 
     func addGroupArrowView(in stackView: UIStackView, item: CheckboxItem) {
 
-        if style.isCollapsingAvailable == false {
+        if style.isCollapseAvailable == false {
             return
         }
 

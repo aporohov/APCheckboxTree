@@ -31,7 +31,7 @@ open class CheckboxTreeStyle {
     // MARK: - Properties
 
     /// Items group collapse availability. If *false*, then item view arrow will not be shown.
-    public var isCollapsingAvailable: Bool = true
+    public var isCollapseAvailable: Bool = true
 
     /// Should items group collapse animation be shown
     public var isCollapseAnimated: Bool = true

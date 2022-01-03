@@ -23,13 +23,16 @@ class CheckboxNode {
 
     var children: [CheckboxNode] = []
 
+    weak var delegate: CheckboxItemDelegate?
+
     // MARK: - Init
 
-    init(item: CheckboxItem, depth: Int, parentNode: CheckboxNode?, style: CheckboxTreeStyle) {
+    init(item: CheckboxItem, depth: Int, parentNode: CheckboxNode?, style: CheckboxTreeStyle, delegate: CheckboxItemDelegate?) {
         self.item = item
         self.depth = depth
         self.parentNode = parentNode
         self.style = style
+        self.delegate = delegate
 
         itemView = CheckboxItemView(style: style)
         itemView.setupView(item: item, level: depth)
@@ -52,7 +55,7 @@ class CheckboxNode {
 
     func isHidden() -> Bool {
 
-        if style.isCollapsingAvailable == false {
+        if style.isCollapseAvailable == false {
             return false
         }
 
@@ -91,6 +94,8 @@ class CheckboxNode {
             self.getRootNode().forEachBranchNode { node in
                 node.itemView.updateSelectionImage(item: node.item)
             }
+
+            self.delegate?.checkboxItemHasBeenTapped(item: self.item)
         }
 
         itemView.collapseAction = { [weak self] in
@@ -123,7 +128,8 @@ class CheckboxNode {
             let node = CheckboxNode(item: item,
                                     depth: depth + 1,
                                     parentNode: self,
-                                    style: style)
+                                    style: style,
+                                    delegate: delegate)
             children.append(node)
         }
     }

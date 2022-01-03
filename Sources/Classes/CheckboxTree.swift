@@ -21,6 +21,9 @@ open class CheckboxTree: UIView {
     /// Customizable style of tree
     public var style = CheckboxTreeStyle()
 
+    /// Tree delegate
+    public weak var delegate: CheckboxTreeDelegate?
+
     // MARK: - Private properties
 
     let stackView: UIStackView = {
@@ -75,7 +78,8 @@ open class CheckboxTree: UIView {
             let node = CheckboxNode(item: item,
                                     depth: 0,
                                     parentNode: nil,
-                                    style: style)
+                                    style: style,
+                                    delegate: self)
             nodes.append(node)
 
             node.forEachBranchNode { childNode in
@@ -84,5 +88,11 @@ open class CheckboxTree: UIView {
                 childNode.updateItemViewVisibility()
             }
         }
+    }
+}
+
+extension CheckboxTree: CheckboxItemDelegate {
+    func checkboxItemHasBeenTapped(item: CheckboxItem) {
+        delegate?.checkboxTreeItemHasBeenTapped(item: item)
     }
 }
