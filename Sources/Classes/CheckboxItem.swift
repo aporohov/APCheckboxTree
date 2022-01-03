@@ -17,7 +17,7 @@ public class CheckboxItem {
         case single
     }
 
-    public enum ItemState {
+    public enum ItemSelectionState {
         case on
         case off
         case mixed
@@ -39,11 +39,12 @@ public class CheckboxItem {
     /// Child items
     public var children: [CheckboxItem] = []
 
-    /// Is group collapsed. (Applicable only to items with type *group*)
+    /// Is group collapsed (Applicable only to items with type *group*)
     public var isGroupCollapsed: Bool
 
-    private var _isEnabled: Bool
+    private var _isEnabled = true
 
+    /// Is item available for selection
     public var isEnabled: Bool {
         get {
             return _isEnabled
@@ -82,7 +83,7 @@ public class CheckboxItem {
     }
 
     /// State of selection. Can be *mixed* for group item if it contains both selected and unselected.
-    public var selectionState: ItemState {
+    public var selectionState: ItemSelectionState {
         if type == .group {
 
             if children.isEmpty {
@@ -111,19 +112,31 @@ public class CheckboxItem {
     // MARK: - Init
 
     public convenience init(title: String, subtitle: String? = nil, children: [CheckboxItem] = [], groupCollapsed: Bool = false) {
-        self.init(title: title, subtitle: subtitle, isSelected: false, children: children, groupCollapsed: groupCollapsed, isEnabled: true)
+        self.init(title: title, subtitle: subtitle, isSelected: false, children: children, groupCollapsed: groupCollapsed)
     }
 
     public convenience init(title: String, subtitle: String? = nil, isSelected: Bool) {
-        self.init(title: title, subtitle: subtitle, isSelected: isSelected, children: [], groupCollapsed: false, isEnabled: true)
+        self.init(title: title, subtitle: subtitle, isSelected: isSelected, children: [], groupCollapsed: false)
     }
 
-    init(title: String, subtitle: String? = nil, isSelected: Bool, children: [CheckboxItem], groupCollapsed: Bool, isEnabled: Bool) {
+    init(title: String, subtitle: String? = nil, isSelected: Bool, children: [CheckboxItem], groupCollapsed: Bool) {
         self.title = title
         self.subtitle = subtitle
         self._isSelected = isSelected
         self.children = children
         self.isGroupCollapsed = groupCollapsed
-        self._isEnabled = isEnabled
+    }
+}
+
+extension CheckboxItem: CustomStringConvertible {
+    public var description: String {
+        var descriptionString = "title = \(title), state = \(selectionState)"
+        if !isEnabled {
+            descriptionString += ", isEnabled = false"
+        }
+        if !children.isEmpty {
+            descriptionString += ", children = \(children)"
+        }
+        return "{\(descriptionString)}"
     }
 }
