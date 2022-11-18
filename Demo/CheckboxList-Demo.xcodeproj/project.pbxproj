@@ -13,11 +13,11 @@
 		0430A5DD2739ED18007FE50C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0430A5DB2739ED18007FE50C /* Main.storyboard */; };
 		0430A5DF2739ED1A007FE50C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0430A5DE2739ED1A007FE50C /* Assets.xcassets */; };
 		0430A5E22739ED1A007FE50C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0430A5E02739ED1A007FE50C /* LaunchScreen.storyboard */; };
-		0430A612273DC430007FE50C /* CheckboxTree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0430A611273DC430007FE50C /* CheckboxTree.framework */; };
+		04C734222911ABFB00D57B2B /* APCheckboxList in Frameworks */ = {isa = PBXBuildFile; productRef = 04C734212911ABFB00D57B2B /* APCheckboxList */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0430A5D22739ED18007FE50C /* CheckboxTree-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CheckboxTree-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0430A5D22739ED18007FE50C /* CheckboxList-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CheckboxList-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0430A5D52739ED18007FE50C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0430A5D72739ED18007FE50C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0430A5D92739ED18007FE50C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +26,7 @@
 		0430A5E12739ED1A007FE50C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0430A5E32739ED1A007FE50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0430A611273DC430007FE50C /* CheckboxTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CheckboxTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04C734202911A95400D57B2B /* APCheckboxList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = APCheckboxList; path = ../APCheckboxList; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0430A612273DC430007FE50C /* CheckboxTree.framework in Frameworks */,
+				04C734222911ABFB00D57B2B /* APCheckboxList in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +44,8 @@
 		0430A5C92739ED18007FE50C = {
 			isa = PBXGroup;
 			children = (
-				0430A5D42739ED18007FE50C /* CheckboxTree-Demo */,
+				04C7341F2911A95400D57B2B /* Packages */,
+				0430A5D42739ED18007FE50C /* CheckboxList-Demo */,
 				0430A5D32739ED18007FE50C /* Products */,
 				0430A5EF2739EDE8007FE50C /* Frameworks */,
 			);
@@ -52,12 +54,12 @@
 		0430A5D32739ED18007FE50C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0430A5D22739ED18007FE50C /* CheckboxTree-Demo.app */,
+				0430A5D22739ED18007FE50C /* CheckboxList-Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0430A5D42739ED18007FE50C /* CheckboxTree-Demo */ = {
+		0430A5D42739ED18007FE50C /* CheckboxList-Demo */ = {
 			isa = PBXGroup;
 			children = (
 				0430A5D52739ED18007FE50C /* AppDelegate.swift */,
@@ -68,7 +70,7 @@
 				0430A5E02739ED1A007FE50C /* LaunchScreen.storyboard */,
 				0430A5E32739ED1A007FE50C /* Info.plist */,
 			);
-			path = "CheckboxTree-Demo";
+			path = "CheckboxList-Demo";
 			sourceTree = "<group>";
 		};
 		0430A5EF2739EDE8007FE50C /* Frameworks */ = {
@@ -79,12 +81,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		04C7341F2911A95400D57B2B /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				04C734202911A95400D57B2B /* APCheckboxList */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0430A5D12739ED18007FE50C /* CheckboxTree-Demo */ = {
+		0430A5D12739ED18007FE50C /* CheckboxList-Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0430A5E62739ED1A007FE50C /* Build configuration list for PBXNativeTarget "CheckboxTree-Demo" */;
+			buildConfigurationList = 0430A5E62739ED1A007FE50C /* Build configuration list for PBXNativeTarget "CheckboxList-Demo" */;
 			buildPhases = (
 				0430A5CE2739ED18007FE50C /* Sources */,
 				0430A5CF2739ED18007FE50C /* Frameworks */,
@@ -94,9 +104,12 @@
 			);
 			dependencies = (
 			);
-			name = "CheckboxTree-Demo";
+			name = "CheckboxList-Demo";
+			packageProductDependencies = (
+				04C734212911ABFB00D57B2B /* APCheckboxList */,
+			);
 			productName = "CheckboxList-Demo";
-			productReference = 0430A5D22739ED18007FE50C /* CheckboxTree-Demo.app */;
+			productReference = 0430A5D22739ED18007FE50C /* CheckboxList-Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -114,7 +127,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0430A5CD2739ED18007FE50C /* Build configuration list for PBXProject "CheckboxTree-Demo" */;
+			buildConfigurationList = 0430A5CD2739ED18007FE50C /* Build configuration list for PBXProject "CheckboxList-Demo" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -127,7 +140,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0430A5D12739ED18007FE50C /* CheckboxTree-Demo */,
+				0430A5D12739ED18007FE50C /* CheckboxList-Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -302,7 +315,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "CheckboxTree-Demo/Info.plist";
+				INFOPLIST_FILE = "CheckboxList-Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -313,7 +326,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aporohov.CheckboxTree-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aporohov.CheckboxList-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -329,7 +342,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "CheckboxTree-Demo/Info.plist";
+				INFOPLIST_FILE = "CheckboxList-Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -340,7 +353,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aporohov.CheckboxTree-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aporohov.CheckboxList-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -351,7 +364,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0430A5CD2739ED18007FE50C /* Build configuration list for PBXProject "CheckboxTree-Demo" */ = {
+		0430A5CD2739ED18007FE50C /* Build configuration list for PBXProject "CheckboxList-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0430A5E42739ED1A007FE50C /* Debug */,
@@ -360,7 +373,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0430A5E62739ED1A007FE50C /* Build configuration list for PBXNativeTarget "CheckboxTree-Demo" */ = {
+		0430A5E62739ED1A007FE50C /* Build configuration list for PBXNativeTarget "CheckboxList-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0430A5E72739ED1A007FE50C /* Debug */,
@@ -370,6 +383,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04C734212911ABFB00D57B2B /* APCheckboxList */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = APCheckboxList;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0430A5CA2739ED18007FE50C /* Project object */;
 }

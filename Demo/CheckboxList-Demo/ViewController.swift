@@ -1,41 +1,62 @@
 //
 //  ViewController.swift
-//  CheckboxTree-Demo
+//  APCheckboxList-Demo
 //
 //  Created by mac on 09.11.2021.
 //
 
 import UIKit
-import CheckboxTree
+import APCheckboxList
 
 class ViewController: UIViewController {
 
-    var items = [CheckboxItem(title: "Europe",
-                              subtitle: "European cities",
-                              children: [CheckboxItem(title: "Berlin",
-                                                      isSelected: false),
-                                         CheckboxItem(title: "Saint Petersburg",
-                                                      isSelected: false),
+    var items = [APCheckboxItem(title: "Europe",
+                                children: [
+                                    APCheckboxItem(title: "Alps",
+                                                   children: [
+                                                    APCheckboxItem(title: "Mont Blanc",
+                                                                   subtitle: "France/Italy, 4810m",
+                                                                   isSelected: false),
+                                                    APCheckboxItem(title: "Matterhorn",
+                                                                   subtitle: "Switzerland, 4478m",
+                                                                   isSelected: false),
+                                                   ]),
+                                    APCheckboxItem(title: "Elbrus",
+                                                   subtitle: "Russia, 5642m",
+                                                   isSelected: false),
+                                    APCheckboxItem(title: "Etna",
+                                                   subtitle: "Italy, 3350m",
+                                                   isSelected: false)
+                                ],
+                                groupCollapsed: true),
+                 APCheckboxItem(title: "Asia",
+                                children: [
+                                    APCheckboxItem(title: "Himalayas",
+                                                   children: [
+                                                    APCheckboxItem(title: "Everest",
+                                                                   subtitle: "Nepal/China, 8848m",
+                                                                   isSelected: false),
+                                                    APCheckboxItem(title: "Lhotse",
+                                                                   subtitle: "Nepal/China, 8516m",
+                                                                   isSelected: false),
+                                                    APCheckboxItem(title: "Annapurna",
+                                                                   subtitle: "Nepal, 8091m",
+                                                                   isSelected: false)
+                                                   ],
+                                                   groupCollapsed: true),
+                                    APCheckboxItem(title: "K2",
+                                                   subtitle: "Pakistan/China, 8614m",
+                                                   isSelected: true)]),
+                 APCheckboxItem(title: "North America",
+                                children: [
+                                    APCheckboxItem(title: "Denali",
+                                                   subtitle: "USA, 6190m",
+                                                   isSelected: true)
+                                ])
+                 
+    ]
 
-                                         CheckboxItem(title: "UK",
-                                                      subtitle: "Cities in United Kingdom",
-                                                      children: [
-                                                        CheckboxItem(title: "London",
-                                                                     isSelected: true),
-                                                        CheckboxItem(title: "Scotland",
-                                                                     subtitle: "Cities in Scotland",
-                                                                     children: [
-                                                                        CheckboxItem(title: "Edinburgh",
-                                                                                     isSelected: true)
-                                                                     ])
-                                                      ],
-                                                      groupCollapsed: true)]),
-                 CheckboxItem(title: "New York",
-                              isSelected: false),
-                 CheckboxItem(title: "Beijing",
-                              isSelected: true)]
-
-    let tree = CheckboxTree()
+    let checkboxList = APCheckboxList()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +87,7 @@ class ViewController: UIViewController {
         ])
 
         let contentStackView = UIStackView()
-        contentStackView.spacing = 20
+        contentStackView.spacing = 10
         contentStackView.axis = .vertical
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -82,14 +103,16 @@ class ViewController: UIViewController {
         addHeightSlider(in: contentStackView)
         addSpacingSlider(in: contentStackView)
         addLevelBoxSlider(in: contentStackView)
-        addIsEnabledButtons(in: contentStackView)
+        addIsEnabledButton(in: contentStackView)
         addCollapseAnimationButton(in: contentStackView)
         addCollapseEnabledButton(in: contentStackView)
 
-        tree.delegate = self
-        tree.items = items
+        // Setup checkbox list
+        
+        checkboxList.delegate = self
+        checkboxList.items = items
 
-        contentStackView.addArrangedSubview(tree)
+        contentStackView.addArrangedSubview(checkboxList)
     }
 
     func addHeightSlider(in stackView: UIStackView) {
@@ -111,8 +134,8 @@ class ViewController: UIViewController {
     }
 
     @objc func heightChanged(sender: UISlider) {
-        tree.style.itemViewStyle.minHeight = CGFloat(sender.value)
-        tree.reloadTree()
+        checkboxList.style.itemViewStyle.minHeight = CGFloat(sender.value)
+        checkboxList.reload()
     }
 
     func addSpacingSlider(in stackView: UIStackView) {
@@ -120,7 +143,7 @@ class ViewController: UIViewController {
         label.text = "Item spacing"
 
         let slider = UISlider()
-        slider.minimumValue = 5
+        slider.minimumValue = 4
         slider.maximumValue = 12
         slider.value = 8
 
@@ -134,8 +157,8 @@ class ViewController: UIViewController {
     }
 
     @objc func spacingChanged(sender: UISlider) {
-        tree.style.itemViewStyle.elementsSpacing = CGFloat(sender.value)
-        tree.reloadTree()
+        checkboxList.style.itemViewStyle.elementsSpacing = CGFloat(sender.value)
+        checkboxList.reload()
     }
 
     func addLevelBoxSlider(in stackView: UIStackView) {
@@ -158,48 +181,32 @@ class ViewController: UIViewController {
 
     @objc func levelBoxChanged(sender: UISlider) {
         let side = CGFloat(sender.value)
-        tree.style.itemViewStyle.levelBoxSize = .init(width: side, height: side)
-        tree.reloadTree()
+        checkboxList.style.itemViewStyle.levelBoxSize = .init(width: side, height: side)
+        checkboxList.reload()
     }
 
-    func addIsEnabledButtons(in stackView: UIStackView) {
-        let berlinButton = UIButton(configuration: .borderedProminent(), primaryAction: .init(handler: { [weak self] act in
-            let berlinItem = self?.items.first?.children[0]
+    func addIsEnabledButton(in stackView: UIStackView) {
+        let button = UIButton(configuration: .borderedProminent(), primaryAction: .init(handler: { [weak self] act in
+            let himalayasItem = self?.items[1].children[0]
 
-            berlinItem?.isEnabled.toggle()
-            self?.tree.reloadTree()
+            himalayasItem?.isEnabled.toggle()
+            self?.checkboxList.reload()
 
-            var buttonTitle = "Berlin isEnabled"
-            if let isOn = berlinItem?.isEnabled {
+            var buttonTitle = "Item isEnabled"
+            if let isOn = himalayasItem?.isEnabled {
                 buttonTitle += isOn ? " = true" : " = false"
             }
 
             (act.sender as? UIButton)?.setTitle(buttonTitle, for: .normal)
         }))
-        berlinButton.setTitle("Berlin isEnabled = true", for: .normal)
+        button.setTitle("Item isEnabled = true", for: .normal)
 
-        let ukButton = UIButton(configuration: .borderedProminent(), primaryAction: .init(handler: { [weak self] act in
-            let ukItem = self?.items.first?.children[2]
-
-            ukItem?.isEnabled.toggle()
-            self?.tree.reloadTree()
-
-            var buttonTitle = "UK isEnabled"
-            if let isOn = ukItem?.isEnabled {
-                buttonTitle += isOn ? " = true" : " = false"
-            }
-
-            (act.sender as? UIButton)?.setTitle(buttonTitle, for: .normal)
-        }))
-        ukButton.setTitle("UK isEnabled = true", for: .normal)
-
-        stackView.addArrangedSubview(berlinButton)
-        stackView.addArrangedSubview(ukButton)
+        stackView.addArrangedSubview(button)
     }
 
     func addCollapseAnimationButton(in stackView: UIStackView) {
         let button = UIButton(configuration: .borderedProminent(), primaryAction: .init(handler: { [weak self] act in
-            let style = self?.tree.style
+            let style = self?.checkboxList.style
             style?.isCollapseAnimated.toggle()
 
             var buttonTitle = "isCollapseAnimated"
@@ -216,10 +223,10 @@ class ViewController: UIViewController {
 
     func addCollapseEnabledButton(in stackView: UIStackView) {
         let button = UIButton(configuration: .borderedProminent(), primaryAction: .init(handler: { [weak self] act in
-            let style = self?.tree.style
+            let style = self?.checkboxList.style
 
             style?.isCollapseAvailable.toggle()
-            self?.tree.reloadTree()
+            self?.checkboxList.reload()
 
             var buttonTitle = "isCollapseAvailable"
             if let isOn = style?.isCollapseAvailable {
@@ -234,8 +241,8 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: CheckboxTreeDelegate {
-    func checkboxTreeItemHasBeenTapped(item: CheckboxItem) {
+extension ViewController: APCheckboxListDelegate {
+    func checkboxListItemDidSelected(item: APCheckboxItem) {
         print(item)
     }
 }

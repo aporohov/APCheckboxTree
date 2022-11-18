@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  CheckboxTree-Demo
+//  APCheckboxList-Demo
 //
 //  Created by mac on 09.11.2021.
 //
