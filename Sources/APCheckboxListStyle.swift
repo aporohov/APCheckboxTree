@@ -53,8 +53,12 @@ open class APCheckboxListStyle {
     }
 
     func setupDefaultImages() {
+#if SWIFT_PACKAGE
         let bundle = Bundle.module
-
+#else
+        
+#endif
+        
         images.checkboxOn = UIImage(named: "icCheckboxOn", in: bundle, compatibleWith: nil)
         images.checkboxOff = UIImage(named: "icCheckboxOff", in: bundle, compatibleWith: nil)
         images.checkboxMixed = UIImage(named: "icCheckboxMixed", in: bundle, compatibleWith: nil)

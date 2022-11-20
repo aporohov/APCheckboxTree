@@ -13,7 +13,6 @@
 		0430A5DD2739ED18007FE50C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0430A5DB2739ED18007FE50C /* Main.storyboard */; };
 		0430A5DF2739ED1A007FE50C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0430A5DE2739ED1A007FE50C /* Assets.xcassets */; };
 		0430A5E22739ED1A007FE50C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0430A5E02739ED1A007FE50C /* LaunchScreen.storyboard */; };
-		04C734222911ABFB00D57B2B /* APCheckboxList in Frameworks */ = {isa = PBXBuildFile; productRef = 04C734212911ABFB00D57B2B /* APCheckboxList */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +25,7 @@
 		0430A5E12739ED1A007FE50C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0430A5E32739ED1A007FE50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0430A611273DC430007FE50C /* CheckboxTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CheckboxTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		04C734202911A95400D57B2B /* APCheckboxList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = APCheckboxList; path = ../APCheckboxList; sourceTree = "<group>"; };
+		04F904AA292AACE500A78495 /* CheckboxList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CheckboxList; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,7 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C734222911ABFB00D57B2B /* APCheckboxList in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,7 +42,7 @@
 		0430A5C92739ED18007FE50C = {
 			isa = PBXGroup;
 			children = (
-				04C7341F2911A95400D57B2B /* Packages */,
+				04F904A5292AA45900A78495 /* Packages */,
 				0430A5D42739ED18007FE50C /* CheckboxList-Demo */,
 				0430A5D32739ED18007FE50C /* Products */,
 				0430A5EF2739EDE8007FE50C /* Frameworks */,
@@ -81,10 +79,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		04C7341F2911A95400D57B2B /* Packages */ = {
+		04F904A5292AA45900A78495 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				04C734202911A95400D57B2B /* APCheckboxList */,
+				04F904AA292AACE500A78495 /* CheckboxList */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -106,7 +104,6 @@
 			);
 			name = "CheckboxList-Demo";
 			packageProductDependencies = (
-				04C734212911ABFB00D57B2B /* APCheckboxList */,
 			);
 			productName = "CheckboxList-Demo";
 			productReference = 0430A5D22739ED18007FE50C /* CheckboxList-Demo.app */;
@@ -383,13 +380,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		04C734212911ABFB00D57B2B /* APCheckboxList */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = APCheckboxList;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0430A5CA2739ED18007FE50C /* Project object */;
 }
