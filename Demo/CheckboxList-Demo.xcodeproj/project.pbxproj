@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04B2F34F292ED47200CEAFE5 /* CustomCheckboxItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2F34E292ED47200CEAFE5 /* CustomCheckboxItemView.swift */; };
 		04F1287E292EBFC0005DD8A7 /* APCheckboxList in Frameworks */ = {isa = PBXBuildFile; productRef = 04F1287D292EBFC0005DD8A7 /* APCheckboxList */; };
 		04F12886292ECD22005DD8A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F12880292ECD22005DD8A7 /* Assets.xcassets */; };
 		04F12887292ECD22005DD8A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F12881292ECD22005DD8A7 /* LaunchScreen.storyboard */; };
 		04F12888292ECD22005DD8A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F12883292ECD22005DD8A7 /* Main.storyboard */; };
-		04F12889292ECD22005DD8A7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04F12885292ECD22005DD8A7 /* Info.plist */; };
-		04F12890292ECD2B005DD8A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1288B292ECD2B005DD8A7 /* ViewController.swift */; };
 		04F12891292ECD2B005DD8A7 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1288C292ECD2B005DD8A7 /* GroupListViewController.swift */; };
 		04F12892292ECD2B005DD8A7 /* PlainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1288D292ECD2B005DD8A7 /* PlainListViewController.swift */; };
 		04F12893292ECD2B005DD8A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1288E292ECD2B005DD8A7 /* AppDelegate.swift */; };
@@ -22,12 +21,12 @@
 /* Begin PBXFileReference section */
 		0430A5D22739ED18007FE50C /* CheckboxList-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CheckboxList-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0430A611273DC430007FE50C /* CheckboxTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CheckboxTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04B2F34E292ED47200CEAFE5 /* CustomCheckboxItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckboxItemView.swift; sourceTree = "<group>"; };
 		04F1287C292EBF88005DD8A7 /* APCheckboxList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = APCheckboxList; path = ..; sourceTree = "<group>"; };
 		04F12880292ECD22005DD8A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04F12882292ECD22005DD8A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04F12884292ECD22005DD8A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04F12885292ECD22005DD8A7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04F1288B292ECD2B005DD8A7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04F1288C292ECD2B005DD8A7 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		04F1288D292ECD2B005DD8A7 /* PlainListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlainListViewController.swift; sourceTree = "<group>"; };
 		04F1288E292ECD2B005DD8A7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +94,6 @@
 			children = (
 				04F12881292ECD22005DD8A7 /* LaunchScreen.storyboard */,
 				04F12883292ECD22005DD8A7 /* Main.storyboard */,
-				04F1288B292ECD2B005DD8A7 /* ViewController.swift */,
 				04F12896292ECE06005DD8A7 /* GroupList */,
 				04F12895292ECDE5005DD8A7 /* PlainList */,
 				04F1288E292ECD2B005DD8A7 /* AppDelegate.swift */,
@@ -108,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				04F1288D292ECD2B005DD8A7 /* PlainListViewController.swift */,
+				04B2F34E292ED47200CEAFE5 /* CustomCheckboxItemView.swift */,
 			);
 			path = PlainList;
 			sourceTree = "<group>";
@@ -192,7 +191,6 @@
 				04F12886292ECD22005DD8A7 /* Assets.xcassets in Resources */,
 				04F12888292ECD22005DD8A7 /* Main.storyboard in Resources */,
 				04F12887292ECD22005DD8A7 /* LaunchScreen.storyboard in Resources */,
-				04F12889292ECD22005DD8A7 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,9 +201,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F12890292ECD2B005DD8A7 /* ViewController.swift in Sources */,
 				04F12891292ECD2B005DD8A7 /* GroupListViewController.swift in Sources */,
 				04F12893292ECD2B005DD8A7 /* AppDelegate.swift in Sources */,
+				04B2F34F292ED47200CEAFE5 /* CustomCheckboxItemView.swift in Sources */,
 				04F12894292ECD2B005DD8A7 /* SceneDelegate.swift in Sources */,
 				04F12892292ECD2B005DD8A7 /* PlainListViewController.swift in Sources */,
 			);
@@ -357,7 +355,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "CheckboxList-Demo/Info.plist";
+				INFOPLIST_FILE = "CheckboxList-Demo/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -384,7 +382,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "CheckboxList-Demo/Info.plist";
+				INFOPLIST_FILE = "CheckboxList-Demo/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
