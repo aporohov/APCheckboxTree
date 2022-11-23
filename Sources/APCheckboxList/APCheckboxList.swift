@@ -49,19 +49,21 @@ open class APCheckboxList: UIView {
     // MARK: - Public methods
 
     /// Reload checkbox list
-    public func reload() {
+    open func reload() {
         stackView.arrangedSubviews.forEach{
             $0.removeFromSuperview()
         }
 
         nodes.removeAll()
 
+        checkIfCollapseAvailable()
+        
         buildCheckboxList()
     }
 
     // MARK: - Private methods
 
-    func setupView() {
+    private func setupView() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
 
@@ -73,7 +75,7 @@ open class APCheckboxList: UIView {
         ])
     }
 
-    func buildCheckboxList() {
+    private func buildCheckboxList() {
         for item in items {
             let node = CheckboxNode(item: item,
                                     depth: 0,
@@ -87,6 +89,12 @@ open class APCheckboxList: UIView {
 
                 childNode.updateItemViewVisibility()
             }
+        }
+    }
+    
+    private func checkIfCollapseAvailable() {
+        if !items.contains(where: { $0.type == .group }) {
+            style.isCollapseAvailable = false
         }
     }
 }

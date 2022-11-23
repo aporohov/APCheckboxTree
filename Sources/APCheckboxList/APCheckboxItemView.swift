@@ -71,7 +71,6 @@ open class APCheckboxItemView: UIView {
     
     open func setupView(item: APCheckboxItem, level: Int) {
         let stackView = UIStackView()
-        stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = style.itemViewStyle.elementsSpacing
 

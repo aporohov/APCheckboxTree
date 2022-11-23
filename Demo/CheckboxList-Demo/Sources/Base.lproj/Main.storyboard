@@ -16,20 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zah-0Z-5Dq">
-                                <rect key="frame" x="173.5" y="432.5" width="67" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="X5I-Fb-ufk"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PaN-wC-UN5">
+                                <rect key="frame" x="151.5" y="417" width="111.5" height="62"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zah-0Z-5Dq">
+                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Groupped list"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="5oe-xo-Hyy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaN-y6-Fdl">
+                                        <rect key="frame" x="0.0" y="31" width="111.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Plain list"/>
+                                        <connections>
+                                            <segue destination="k9E-Tc-fBs" kind="show" id="BHY-7y-owA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Cq-ya-XNV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Zah-0Z-5Dq" firstAttribute="centerY" secondItem="mNe-Fw-1i2" secondAttribute="centerY" id="aIr-tP-btt"/>
-                            <constraint firstItem="Zah-0Z-5Dq" firstAttribute="centerX" secondItem="mNe-Fw-1i2" secondAttribute="centerX" id="pPB-Br-hCR"/>
+                            <constraint firstItem="PaN-wC-UN5" firstAttribute="centerY" secondItem="mNe-Fw-1i2" secondAttribute="centerY" id="Lgl-gw-CwM"/>
+                            <constraint firstItem="PaN-wC-UN5" firstAttribute="centerX" secondItem="mNe-Fw-1i2" secondAttribute="centerX" id="xIU-8I-IkB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wgV-Ec-PIs"/>
@@ -38,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="789.85507246376812" y="82.366071428571431"/>
         </scene>
-        <!--View Controller-->
+        <!--Group List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CheckboxTree_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GroupListViewController" customModule="CheckboxList_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1839.1304347826087" y="82.366071428571431"/>
+            <point key="canvasLocation" x="1820" y="-266"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Od6-Lp-ATb">
@@ -71,6 +84,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0l-c0-Lcg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-120.28985507246378" y="82.366071428571431"/>
+        </scene>
+        <!--Plain List View Controller-->
+        <scene sceneID="MrU-Pl-b1Y">
+            <objects>
+                <viewController id="k9E-Tc-fBs" customClass="PlainListViewController" customModule="CheckboxList_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xUv-Zf-nwN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="shg-8d-VbJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="emO-Sf-hA1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pey-pX-mDm" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1819" y="425"/>
         </scene>
     </scenes>
     <resources>
