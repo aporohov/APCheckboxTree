@@ -126,7 +126,7 @@ open class APCheckboxItem {
     ///   - title: Title
     ///   - subtitle: Subtitle
     ///   - isSelected: Checkbox selected or not
-    public convenience init(title: String, subtitle: String? = nil, isSelected: Bool) {
+    public convenience init(title: String, subtitle: String? = nil, isSelected: Bool = false) {
         self.init(title: title, subtitle: subtitle, isSelected: isSelected, children: [], isGroupCollapsed: false)
     }
 
