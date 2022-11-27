@@ -1,6 +1,6 @@
 //
 //  APCheckboxItemView.swift
-//  APCheckboxList
+//  APCheckboxTree
 //
 //  Created by mac on 09.11.2021.
 //
@@ -8,12 +8,12 @@
 import UIKit
 
 /// Item view.
-/// Final checkbox list is a stackView filled with this kind of views.
+/// Final checkbox tree is a stackView filled with this kind of views.
 open class APCheckboxItemView: UIView {
 
     // MARK: - Properties
 
-    var style: APCheckboxListStyle
+    var style: APCheckboxTreeStyle
 
     var groupArrowButton: UIButton?
     var selectionImageView: UIImageView?
@@ -23,7 +23,7 @@ open class APCheckboxItemView: UIView {
 
     // MARK: - Init
 
-    public required init(style: APCheckboxListStyle) {
+    public required init(style: APCheckboxTreeStyle) {
         self.style = style
         super.init(frame: .zero)
 

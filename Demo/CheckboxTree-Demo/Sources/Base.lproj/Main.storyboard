@@ -17,20 +17,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PaN-wC-UN5">
-                                <rect key="frame" x="151.5" y="417" width="111.5" height="62"/>
+                                <rect key="frame" x="137.5" y="417" width="139" height="62"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zah-0Z-5Dq">
-                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="139" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Groupped list"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Checkbox tree"/>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" id="5oe-xo-Hyy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaN-y6-Fdl">
-                                        <rect key="frame" x="0.0" y="31" width="111.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="31" width="139" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Plain list"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Custom item view"/>
                                         <connections>
                                             <segue destination="k9E-Tc-fBs" kind="show" id="BHY-7y-owA"/>
                                         </connections>
@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="789.85507246376812" y="82.366071428571431"/>
         </scene>
-        <!--Group List View Controller-->
+        <!--Tree View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GroupListViewController" customModule="CheckboxList_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TreeViewController" customModule="CheckboxTree_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,7 +88,7 @@
         <!--Plain List View Controller-->
         <scene sceneID="MrU-Pl-b1Y">
             <objects>
-                <viewController id="k9E-Tc-fBs" customClass="PlainListViewController" customModule="CheckboxList_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="k9E-Tc-fBs" customClass="PlainListViewController" customModule="CheckboxTree_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xUv-Zf-nwN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

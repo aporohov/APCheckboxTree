@@ -1,6 +1,6 @@
 //
 //  APCheckboxItem.swift
-//  APCheckboxList
+//  APCheckboxTree
 //
 //  Created by mac on 10.11.2021.
 //
@@ -9,7 +9,7 @@ import UIKit
 
 /// Checkbox item model
 open class APCheckboxItem {
-
+    
     // MARK: - Enum
 
     public enum ItemType {
@@ -110,21 +110,33 @@ open class APCheckboxItem {
     }
 
     // MARK: - Init
-
-    public convenience init(title: String, subtitle: String? = nil, children: [APCheckboxItem] = [], groupCollapsed: Bool = false) {
-        self.init(title: title, subtitle: subtitle, isSelected: false, children: children, groupCollapsed: groupCollapsed)
+    
+    /// Init node of checkbox tree
+    /// - Parameters:
+    ///   - title: Title
+    ///   - subtitle: Subtitle
+    ///   - children: Children of node
+    ///   - isGroupCollapsed: children not visiable if *true*
+    public convenience init(title: String, subtitle: String? = nil, children: [APCheckboxItem] = [], isGroupCollapsed: Bool = false) {
+        self.init(title: title, subtitle: subtitle, isSelected: false, children: children, isGroupCollapsed: isGroupCollapsed)
     }
-
+    
+    /// Init leaf of checkbox tree
+    /// - Parameters:
+    ///   - title: Title
+    ///   - subtitle: Subtitle
+    ///   - isSelected: Checkbox selected or not
     public convenience init(title: String, subtitle: String? = nil, isSelected: Bool) {
-        self.init(title: title, subtitle: subtitle, isSelected: isSelected, children: [], groupCollapsed: false)
+        self.init(title: title, subtitle: subtitle, isSelected: isSelected, children: [], isGroupCollapsed: false)
     }
 
-    init(title: String, subtitle: String? = nil, isSelected: Bool, children: [APCheckboxItem], groupCollapsed: Bool) {
+    /// Override purpose only. Call convinience init instead
+    public init(title: String, subtitle: String? = nil, isSelected: Bool, children: [APCheckboxItem], isGroupCollapsed: Bool) {
         self.title = title
         self.subtitle = subtitle
         self._isSelected = isSelected
         self.children = children
-        self.isGroupCollapsed = groupCollapsed
+        self.isGroupCollapsed = isGroupCollapsed
     }
 }
 

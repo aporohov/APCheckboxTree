@@ -1,14 +1,14 @@
 //
-//  APCheckboxListStyle.swift
-//  APCheckboxList
+//  APCheckboxTreeStyle.swift
+//  APCheckboxTree
 //
 //  Created by mac on 21.11.2021.
 //
 
 import UIKit
 
-/// Describes checkbox list display style
-open class APCheckboxListStyle {
+/// Describes checkbox tree display style
+open class APCheckboxTreeStyle {
     
     public struct Images {
         public var checkboxOn: UIImage?
@@ -29,7 +29,7 @@ open class APCheckboxListStyle {
     }
 
     // MARK: - Properties
-
+    
     /// Type of item view. Must be subclass of *APCheckboxItemView*.
     public var checkboxItemViewType: APCheckboxItemView.Type = APCheckboxItemView.self
     
@@ -45,7 +45,7 @@ open class APCheckboxListStyle {
     /// Describes single item view style
     public var itemViewStyle = ItemViewStyle()
 
-    /// Contains all checkbox list images
+    /// Contains all checkbox state images
     public var images = Images()
 
     init() {

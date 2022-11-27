@@ -1,6 +1,6 @@
 //
 //  CheckboxNode.swift
-//  APCheckboxList
+//  APCheckboxTree
 //
 //  Created by mac on 21.11.2021.
 //
@@ -12,7 +12,7 @@ class CheckboxNode {
 
     // MARK: - Properties
 
-    var style: APCheckboxListStyle
+    var style: APCheckboxTreeStyle
 
     weak var parentNode: CheckboxNode?
 
@@ -27,7 +27,7 @@ class CheckboxNode {
 
     // MARK: - Init
 
-    init(item: APCheckboxItem, depth: Int, parentNode: CheckboxNode?, style: APCheckboxListStyle, delegate: CheckboxItemDelegate?) {
+    init(item: APCheckboxItem, depth: Int, parentNode: CheckboxNode?, style: APCheckboxTreeStyle, delegate: CheckboxItemDelegate?) {
         self.item = item
         self.depth = depth
         self.parentNode = parentNode

@@ -1,16 +1,14 @@
 //
-//  GroupListViewController.swift
-//  CheckboxList-Demo
+//  TreeViewController.swift
+//  CheckboxTree-Demo
 //
 //  Created by mac on 20.11.2022.
 //
 
 import UIKit
+import APCheckboxTree
 
-import UIKit
-import APCheckboxList
-
-class GroupListViewController: UIViewController {
+class TreeViewController: UIViewController {
 
     var items = [APCheckboxItem(title: "Europe",
                                 children: [
@@ -30,7 +28,7 @@ class GroupListViewController: UIViewController {
                                                    subtitle: "Italy, 3350m",
                                                    isSelected: false)
                                 ],
-                                groupCollapsed: true),
+                        isGroupCollapsed: true),
                  APCheckboxItem(title: "Asia",
                                 children: [
                                     APCheckboxItem(title: "Himalayas",
@@ -45,7 +43,7 @@ class GroupListViewController: UIViewController {
                                                                    subtitle: "Nepal, 8091m",
                                                                    isSelected: false)
                                                    ],
-                                                   groupCollapsed: true),
+                                           isGroupCollapsed: true),
                                     APCheckboxItem(title: "K2",
                                                    subtitle: "Pakistan/China, 8614m",
                                                    isSelected: true)]),
@@ -58,7 +56,7 @@ class GroupListViewController: UIViewController {
                  
     ]
 
-    let checkboxList = APCheckboxList()
+    let checkboxTree = APCheckboxTree()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,10 +109,10 @@ class GroupListViewController: UIViewController {
 
         // Setup checkbox list
         
-        checkboxList.delegate = self
-        checkboxList.items = items
+        checkboxTree.delegate = self
+        checkboxTree.items = items
 
-        contentStackView.addArrangedSubview(checkboxList)
+        contentStackView.addArrangedSubview(checkboxTree)
     }
 
     func addHeightSlider(in stackView: UIStackView) {
@@ -136,8 +134,8 @@ class GroupListViewController: UIViewController {
     }
 
     @objc func heightChanged(sender: UISlider) {
-        checkboxList.style.itemViewStyle.minHeight = CGFloat(sender.value)
-        checkboxList.reload()
+        checkboxTree.style.itemViewStyle.minHeight = CGFloat(sender.value)
+        checkboxTree.reload()
     }
 
     func addSpacingSlider(in stackView: UIStackView) {
@@ -159,8 +157,8 @@ class GroupListViewController: UIViewController {
     }
 
     @objc func spacingChanged(sender: UISlider) {
-        checkboxList.style.itemViewStyle.elementsSpacing = CGFloat(sender.value)
-        checkboxList.reload()
+        checkboxTree.style.itemViewStyle.elementsSpacing = CGFloat(sender.value)
+        checkboxTree.reload()
     }
 
     func addLevelBoxSlider(in stackView: UIStackView) {
@@ -183,8 +181,8 @@ class GroupListViewController: UIViewController {
 
     @objc func levelBoxChanged(sender: UISlider) {
         let side = CGFloat(sender.value)
-        checkboxList.style.itemViewStyle.levelBoxSize = .init(width: side, height: side)
-        checkboxList.reload()
+        checkboxTree.style.itemViewStyle.levelBoxSize = .init(width: side, height: side)
+        checkboxTree.reload()
     }
 
     func addIsEnabledButton(in stackView: UIStackView) {
@@ -192,7 +190,7 @@ class GroupListViewController: UIViewController {
             let himalayasItem = self?.items[1].children[0]
 
             himalayasItem?.isEnabled.toggle()
-            self?.checkboxList.reload()
+            self?.checkboxTree.reload()
 
             var buttonTitle = "Item isEnabled"
             if let isOn = himalayasItem?.isEnabled {
@@ -208,7 +206,7 @@ class GroupListViewController: UIViewController {
 
     func addCollapseAnimationButton(in stackView: UIStackView) {
         let button = UIButton(configuration: .borderedProminent(), primaryAction: .init(handler: { [weak self] act in
-            let style = self?.checkboxList.style
+            let style = self?.checkboxTree.style
             style?.isCollapseAnimated.toggle()
 
             var buttonTitle = "isCollapseAnimated"
@@ -225,10 +223,10 @@ class GroupListViewController: UIViewController {
 
     func addCollapseEnabledButton(in stackView: UIStackView) {
         let button = UIButton(configuration: .borderedProminent(), primaryAction: .init(handler: { [weak self] act in
-            let style = self?.checkboxList.style
+            let style = self?.checkboxTree.style
 
             style?.isCollapseAvailable.toggle()
-            self?.checkboxList.reload()
+            self?.checkboxTree.reload()
 
             var buttonTitle = "isCollapseAvailable"
             if let isOn = style?.isCollapseAvailable {
@@ -243,8 +241,8 @@ class GroupListViewController: UIViewController {
     }
 }
 
-extension GroupListViewController: APCheckboxListDelegate {
-    func checkboxListItemDidSelected(item: APCheckboxItem) {
+extension TreeViewController: APCheckboxTreeDelegate {
+    func checkboxItemDidSelected(item: APCheckboxItem) {
         print(item)
     }
 }

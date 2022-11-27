@@ -1,25 +1,33 @@
 //
 //  PlainListViewController.swift
-//  CheckboxList-Demo
+//  CheckboxTree-Demo
 //
 //  Created by mac on 20.11.2022.
 //
 
 import UIKit
-import APCheckboxList
+import APCheckboxTree
+
+class MyItem: APCheckboxItem {
+    public var a: Bool = true
+    
+    override init(title: String, subtitle: String? = nil, isSelected: Bool, children: [APCheckboxItem], isGroupCollapsed: Bool) {
+        super.init(title: title, subtitle: subtitle, isSelected: isSelected, children: children, isGroupCollapsed: isGroupCollapsed)
+    }
+}
 
 class PlainListViewController: UIViewController {
     
-    let items = [APCheckboxItem(title: "Orange"),
-                 APCheckboxItem(title: "Watermelon"),
-                 APCheckboxItem(title: "Apple", isSelected: true),
-                 APCheckboxItem(title: "Banana"),
-                 APCheckboxItem(title: "Cucumber")]
+    let items = [MyItem(title: "Orange"),
+                 MyItem(title: "Watermelon"),
+                 MyItem(title: "Apple"),
+                 MyItem(title: "Banana"),
+                 MyItem(title: "Cucumber")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let checkboxList = APCheckboxList()
+        let checkboxList = APCheckboxTree()
         
         checkboxList.style.checkboxItemViewType = CustomCheckboxItemView.self
         

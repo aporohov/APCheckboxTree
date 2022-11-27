@@ -1,23 +1,23 @@
 import XCTest
-@testable import APCheckboxList
+@testable import APCheckboxTree
 
-final class APCheckboxListTests: XCTestCase {
+final class APCheckboxTreeTests: XCTestCase {
     func testItemsCount() throws {
-        let list = APCheckboxList()
+        let tree = APCheckboxTree()
         
-        list.items = [APCheckboxItem(title: "item 1"),
+        tree.items = [APCheckboxItem(title: "item 1"),
                       APCheckboxItem(title: "item 2")]
         
-        XCTAssertEqual(list.items.count, 2)
+        XCTAssertEqual(tree.items.count, 2)
     }
     
     func testItemSelection() throws {
-        let list = APCheckboxList()
+        let tree = APCheckboxTree()
         
         let item1 = APCheckboxItem(title: "item 1")
         let item2 = APCheckboxItem(title: "item 2")
         
-        list.items = [item1, item2]
+        tree.items = [item1, item2]
         
         item1.isSelected = true
         
@@ -26,7 +26,7 @@ final class APCheckboxListTests: XCTestCase {
     }
     
     func testGroupSelection() throws {
-        let list = APCheckboxList()
+        let tree = APCheckboxTree()
         
         let nestedItem1 = APCheckboxItem(title: "nested item 1")
         let nestedItem2 = APCheckboxItem(title: "nested item 2")
@@ -38,7 +38,7 @@ final class APCheckboxListTests: XCTestCase {
                                    ])
         let item2 = APCheckboxItem(title: "item 2")
         
-        list.items = [item1, item2]
+        tree.items = [item1, item2]
         
         item1.isSelected = true
         
@@ -48,7 +48,7 @@ final class APCheckboxListTests: XCTestCase {
     }
     
     func testGroupMixedSelection() throws {
-        let list = APCheckboxList()
+        let tree = APCheckboxTree()
         
         let nestedItem1 = APCheckboxItem(title: "nested item 1")
         let nestedItem2 = APCheckboxItem(title: "nested item 2")
@@ -59,7 +59,7 @@ final class APCheckboxListTests: XCTestCase {
                                     nestedItem2
                                    ])
         
-        list.items = [item1]
+        tree.items = [item1]
         
         nestedItem1.isSelected = true
         

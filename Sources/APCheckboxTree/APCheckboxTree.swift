@@ -1,14 +1,14 @@
 //
-//  APCheckboxList.swift
-//  APCheckboxList
+//  APCheckboxTree.swift
+//  APCheckboxTree
 //
 //  Created by mac on 09.11.2021.
 //
 
 import UIKit
 
-open class APCheckboxList: UIView {
-
+open class APCheckboxTree: UIView {
+    
     // MARK: - Public properties
 
     /// Checkbox items
@@ -18,11 +18,11 @@ open class APCheckboxList: UIView {
         }
     }
 
-    /// Customizable style of list
-    public var style = APCheckboxListStyle()
+    /// Customizable style of tree
+    public var style = APCheckboxTreeStyle()
 
-    /// Checkbox list delegate
-    public weak var delegate: APCheckboxListDelegate?
+    /// Checkbox tree delegate
+    public weak var delegate: APCheckboxTreeDelegate?
 
     // MARK: - Private properties
 
@@ -48,7 +48,7 @@ open class APCheckboxList: UIView {
 
     // MARK: - Public methods
 
-    /// Reload checkbox list
+    /// Reload checkbox tree
     open func reload() {
         stackView.arrangedSubviews.forEach{
             $0.removeFromSuperview()
@@ -58,7 +58,7 @@ open class APCheckboxList: UIView {
 
         checkIfCollapseAvailable()
         
-        buildCheckboxList()
+        buildCheckboxTree()
     }
 
     // MARK: - Private methods
@@ -75,7 +75,7 @@ open class APCheckboxList: UIView {
         ])
     }
 
-    private func buildCheckboxList() {
+    private func buildCheckboxTree() {
         for item in items {
             let node = CheckboxNode(item: item,
                                     depth: 0,
@@ -99,8 +99,8 @@ open class APCheckboxList: UIView {
     }
 }
 
-extension APCheckboxList: CheckboxItemDelegate {
+extension APCheckboxTree: CheckboxItemDelegate {
     func checkboxItemDidSelected(item: APCheckboxItem) {
-        delegate?.checkboxListItemDidSelected(item: item)
+        delegate?.checkboxItemDidSelected(item: item)
     }
 }
