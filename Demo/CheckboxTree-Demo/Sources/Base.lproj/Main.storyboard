@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="-120.28985507246378" y="82.366071428571431"/>
         </scene>
-        <!--Plain List View Controller-->
+        <!--Custom Item View Controller-->
         <scene sceneID="MrU-Pl-b1Y">
             <objects>
-                <viewController id="k9E-Tc-fBs" customClass="PlainListViewController" customModule="CheckboxTree_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="k9E-Tc-fBs" customClass="CustomItemViewController" customModule="CheckboxTree_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xUv-Zf-nwN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

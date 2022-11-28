@@ -28,7 +28,7 @@ class TreeViewController: UIViewController {
                                                    subtitle: "Italy, 3350m",
                                                    isSelected: false)
                                 ],
-                        isGroupCollapsed: true),
+                                isGroupCollapsed: true),
                  APCheckboxItem(title: "Asia",
                                 children: [
                                     APCheckboxItem(title: "Himalayas",
@@ -43,7 +43,7 @@ class TreeViewController: UIViewController {
                                                                    subtitle: "Nepal, 8091m",
                                                                    isSelected: false)
                                                    ],
-                                           isGroupCollapsed: true),
+                                                   isGroupCollapsed: true),
                                     APCheckboxItem(title: "K2",
                                                    subtitle: "Pakistan/China, 8614m",
                                                    isSelected: true)]),
@@ -53,11 +53,12 @@ class TreeViewController: UIViewController {
                                                    subtitle: "USA, 6190m",
                                                    isSelected: true)
                                 ])
-                 
     ]
 
     let checkboxTree = APCheckboxTree()
 
+    // MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -107,14 +108,15 @@ class TreeViewController: UIViewController {
         addCollapseAnimationButton(in: contentStackView)
         addCollapseEnabledButton(in: contentStackView)
 
-        // Setup checkbox list
-        
+        // Setup checkbox tree
         checkboxTree.delegate = self
         checkboxTree.items = items
 
         contentStackView.addArrangedSubview(checkboxTree)
     }
 
+    // MARK: - Sliders
+    
     func addHeightSlider(in stackView: UIStackView) {
         let label = UILabel()
         label.text = "Item height"
@@ -185,6 +187,8 @@ class TreeViewController: UIViewController {
         checkboxTree.reload()
     }
 
+    // MARK: - Buttons
+    
     func addIsEnabledButton(in stackView: UIStackView) {
         let button = UIButton(configuration: .borderedProminent(), primaryAction: .init(handler: { [weak self] act in
             let himalayasItem = self?.items[1].children[0]
