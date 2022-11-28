@@ -7,38 +7,38 @@
 
 import UIKit
 
-open class APCheckboxTree: UIView {
+open class APCheckboxTree<T: APCheckboxItem>: UIView {
     
     // MARK: - Public properties
 
     /// Checkbox items
-    public var items: [APCheckboxItem] = [] {
+    public var items: [T] = [] {
         didSet {
             reload()
         }
     }
 
     /// Customizable style of tree
-    public var style = APCheckboxTreeStyle()
+    public private(set) var style: APCheckboxTreeStyle<T> = APCheckboxTreeStyle()
 
     /// Checkbox tree delegate
     public weak var delegate: APCheckboxTreeDelegate?
 
     // MARK: - Private properties
 
-    let stackView: UIStackView = {
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         return stackView
     }()
 
-    var nodes: [CheckboxNode] = []
+    private var nodes: [CheckboxNode<T>] = []
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-
+    public init(style: APCheckboxTreeStyle<T> = APCheckboxTreeStyle()) {
+        self.style = style
+        super.init(frame: .zero)
         setupView()
     }
 

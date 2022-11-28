@@ -8,7 +8,7 @@
 import UIKit
 
 /// Describes checkbox tree display style
-open class APCheckboxTreeStyle {
+open class APCheckboxTreeStyle<T: APCheckboxItem> {
     
     public struct Images {
         public var checkboxOn: UIImage?
@@ -30,9 +30,6 @@ open class APCheckboxTreeStyle {
 
     // MARK: - Properties
     
-    /// Type of item view. Must be subclass of *APCheckboxItemView*.
-    public var checkboxItemViewType: APCheckboxItemView.Type = APCheckboxItemView.self
-    
     /// Items group collapse availability. If *false*, then item view arrow will not be shown.
     public var isCollapseAvailable: Bool = true
 
@@ -48,10 +45,21 @@ open class APCheckboxTreeStyle {
     /// Contains all checkbox state images
     public var images = Images()
 
-    init() {
+    // MARK: - Open methods
+    
+    /// Checkbox item view. Must be subclass of *APCheckboxItemView*. Overridable.
+    open func getCheckboxItemView() -> APCheckboxItemView<T> {
+        return APCheckboxItemView(style: self)
+    }
+    
+    // MARK: - Init
+    
+    public init() {
         setupDefaultImages()
     }
 
+    // MARK: - Private methods
+    
     func setupDefaultImages() {
 #if SWIFT_PACKAGE
         let bundle = Bundle.module

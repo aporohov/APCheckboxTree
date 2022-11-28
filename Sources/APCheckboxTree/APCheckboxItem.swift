@@ -8,7 +8,7 @@
 import UIKit
 
 /// Checkbox item model
-open class APCheckboxItem {
+open class APCheckboxItem: CustomStringConvertible {
     
     // MARK: - Enum
 
@@ -138,17 +138,17 @@ open class APCheckboxItem {
         self.children = children
         self.isGroupCollapsed = isGroupCollapsed
     }
-}
-
-extension APCheckboxItem: CustomStringConvertible {
-    public var description: String {
+    
+    // MARK: - CustomStringConvertible
+    
+    open var description: String {
         var descriptionString = "title = \(title), state = \(selectionState)"
         if !isEnabled {
             descriptionString += ", isEnabled = false"
         }
         if !children.isEmpty {
-            descriptionString += ", children = \(children)"
+            descriptionString += ", children = \(children.count)"
         }
-        return "{\(descriptionString)}"
+        return "\(descriptionString)"
     }
 }

@@ -8,34 +8,33 @@
 import UIKit
 
 /// Tree node
-class CheckboxNode {
+class CheckboxNode<T: APCheckboxItem> {
 
     // MARK: - Properties
 
-    var style: APCheckboxTreeStyle
+    private(set) var style: APCheckboxTreeStyle<T>
 
-    weak var parentNode: CheckboxNode?
+    private(set) weak var parentNode: CheckboxNode?
 
-    var item: APCheckboxItem
-    var depth: Int
+    private(set) var item: T
+    private(set) var depth: Int
 
-    var itemView: APCheckboxItemView
+    private(set) var itemView: APCheckboxItemView<T>
 
-    var children: [CheckboxNode] = []
+    private(set) var children: [CheckboxNode] = []
 
-    weak var delegate: CheckboxItemDelegate?
+    private(set) weak var delegate: CheckboxItemDelegate?
 
     // MARK: - Init
 
-    init(item: APCheckboxItem, depth: Int, parentNode: CheckboxNode?, style: APCheckboxTreeStyle, delegate: CheckboxItemDelegate?) {
+    init(item: T, depth: Int, parentNode: CheckboxNode?, style: APCheckboxTreeStyle<T>, delegate: CheckboxItemDelegate?) {
         self.item = item
         self.depth = depth
         self.parentNode = parentNode
         self.style = style
         self.delegate = delegate
 
-        let itemViewType = style.checkboxItemViewType
-        itemView = itemViewType.init(style: style)
+        itemView = style.getCheckboxItemView()
         itemView.setupView(item: item, level: depth)
 
         setupItemViewActions()
@@ -43,7 +42,7 @@ class CheckboxNode {
         generateChildNodes()
     }
 
-    // MARK: - Methods
+    // MARK: - Internal methods
 
     func updateItemViewVisibility() {
         let isItemViewHidden = isHidden()
@@ -54,7 +53,28 @@ class CheckboxNode {
         itemView.alpha = isItemViewHidden ? 0 : 1
     }
 
-    func isHidden() -> Bool {
+    func getRootNode() -> CheckboxNode {
+        if let parentNode = parentNode {
+            return parentNode.getRootNode()
+        }
+        return self
+    }
+
+    func forEachBranchNode(_ closure: (CheckboxNode) -> ()) {
+        closure(self)
+        forEachChildNode(closure)
+    }
+
+    func forEachChildNode(_ closure: (CheckboxNode) -> ()) {
+        children.forEach { childNode in
+            closure(childNode)
+            childNode.forEachChildNode(closure)
+        }
+    }
+    
+    // MARK: - Private methods
+    
+    private func isHidden() -> Bool {
         if style.isCollapseAvailable == false {
             return false
         }
@@ -69,7 +89,7 @@ class CheckboxNode {
         return false
     }
 
-    func setupItemViewActions() {
+    private func setupItemViewActions() {
         itemView.tapAction = { [weak self] in
             guard let self = self else {
                 return
@@ -123,33 +143,14 @@ class CheckboxNode {
         }
     }
 
-    func generateChildNodes() {
+    private func generateChildNodes() {
         for item in item.children {
-            let node = CheckboxNode(item: item,
+            let node = CheckboxNode(item: item as! T,
                                     depth: depth + 1,
                                     parentNode: self,
                                     style: style,
                                     delegate: delegate)
             children.append(node)
-        }
-    }
-
-    func getRootNode() -> CheckboxNode {
-        if let parentNode = parentNode {
-            return parentNode.getRootNode()
-        }
-        return self
-    }
-
-    func forEachBranchNode(_ closure: (CheckboxNode) -> ()) {
-        closure(self)
-        forEachChildNode(closure)
-    }
-
-    func forEachChildNode(_ closure: (CheckboxNode) -> ()) {
-        children.forEach { childNode in
-            closure(childNode)
-            childNode.forEachChildNode(closure)
         }
     }
 }

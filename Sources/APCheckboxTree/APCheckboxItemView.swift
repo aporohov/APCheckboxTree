@@ -9,21 +9,21 @@ import UIKit
 
 /// Item view.
 /// Final checkbox tree is a stackView filled with this kind of views.
-open class APCheckboxItemView: UIView {
+open class APCheckboxItemView<T: APCheckboxItem>: UIView {
 
     // MARK: - Properties
 
-    var style: APCheckboxTreeStyle
+    public private(set) var style: APCheckboxTreeStyle<T>
 
-    var groupArrowButton: UIButton?
-    var selectionImageView: UIImageView?
+    public private(set) var groupArrowButton: UIButton?
+    public private(set) var selectionImageView: UIImageView?
 
-    var tapAction: (() -> ())?
-    var collapseAction: (() -> ())?
+    public internal(set) var tapAction: (() -> ())?
+    public internal(set) var collapseAction: (() -> ())?
 
     // MARK: - Init
 
-    public required init(style: APCheckboxTreeStyle) {
+    public required init(style: APCheckboxTreeStyle<T>) {
         self.style = style
         super.init(frame: .zero)
 
@@ -37,11 +37,11 @@ open class APCheckboxItemView: UIView {
 
     // MARK: - Actions
 
-    @objc func itemTapped(gestureRecognizer: UITapGestureRecognizer) {
+    @objc open func itemTapped(gestureRecognizer: UITapGestureRecognizer) {
         tapAction?()
     }
 
-    @objc func collapseIconTapped(gestureRecognizer: UITapGestureRecognizer) {
+    @objc open func collapseIconTapped(gestureRecognizer: UITapGestureRecognizer) {
         collapseAction?()
     }
 
@@ -69,7 +69,7 @@ open class APCheckboxItemView: UIView {
     
     // MARK: - Setup View
     
-    open func setupView(item: APCheckboxItem, level: Int) {
+    open func setupView(item: T, level: Int) {
         let stackView = UIStackView()
         stackView.alignment = .center
         stackView.spacing = style.itemViewStyle.elementsSpacing
@@ -109,7 +109,7 @@ open class APCheckboxItemView: UIView {
         return emptyView
     }
 
-    open func groupArrowView(item: APCheckboxItem) -> UIView {
+    open func groupArrowView(item: T) -> UIView {
         if item.type == .group {
             let button = UIButton()
             button.setBackgroundImage(style.images.groupArrow, for: .normal)
@@ -129,7 +129,7 @@ open class APCheckboxItemView: UIView {
         }
     }
 
-    open func selectionImageView(item: APCheckboxItem) -> UIView {
+    open func selectionImageView(item: T) -> UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
 
@@ -144,7 +144,7 @@ open class APCheckboxItemView: UIView {
         return imageView
     }
 
-    open func titleView(item: APCheckboxItem) -> UIView {
+    open func titleView(item: T) -> UIView {
         let titleStackView = UIStackView()
         titleStackView.axis = .vertical
 
