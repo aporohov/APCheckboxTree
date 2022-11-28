@@ -32,6 +32,7 @@ open class APCheckboxTree<T: APCheckboxItem>: UIView {
         return stackView
     }()
 
+    /// Tree of nodes
     private var nodes: [CheckboxNode<T>] = []
 
     // MARK: - Init
@@ -84,10 +85,8 @@ open class APCheckboxTree<T: APCheckboxItem>: UIView {
                                     delegate: self)
             nodes.append(node)
 
-            node.forEachBranchNode { childNode in
-                stackView.addArrangedSubview(childNode.itemView)
-
-                childNode.updateItemViewVisibility()
+            node.forEachBranchNode { branchNode in
+                stackView.addArrangedSubview(branchNode.itemView)
             }
         }
     }

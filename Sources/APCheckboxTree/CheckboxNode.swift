@@ -36,22 +36,15 @@ class CheckboxNode<T: APCheckboxItem> {
 
         itemView = style.getCheckboxItemView()
         itemView.setupView(item: item, level: depth)
-
+        
         setupItemViewActions()
-
+        
         generateChildNodes()
+        
+        updateItemViewVisibility()
     }
 
     // MARK: - Internal methods
-
-    func updateItemViewVisibility() {
-        let isItemViewHidden = isHidden()
-
-        if itemView.isHidden != isItemViewHidden {
-            itemView.isHidden = isItemViewHidden
-        }
-        itemView.alpha = isItemViewHidden ? 0 : 1
-    }
 
     func getRootNode() -> CheckboxNode {
         if let parentNode = parentNode {
@@ -152,5 +145,14 @@ class CheckboxNode<T: APCheckboxItem> {
                                     delegate: delegate)
             children.append(node)
         }
+    }
+    
+    private func updateItemViewVisibility() {
+        let isItemViewHidden = isHidden()
+
+        if itemView.isHidden != isItemViewHidden {
+            itemView.isHidden = isItemViewHidden
+        }
+        itemView.alpha = isItemViewHidden ? 0 : 1
     }
 }

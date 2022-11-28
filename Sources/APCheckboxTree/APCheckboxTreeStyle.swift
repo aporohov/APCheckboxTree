@@ -42,7 +42,7 @@ open class APCheckboxTreeStyle<T: APCheckboxItem> {
     /// Describes single item view style
     public var itemViewStyle = ItemViewStyle()
 
-    /// Contains all checkbox state images
+    /// Contains all images
     public var images = Images()
 
     // MARK: - Open methods
