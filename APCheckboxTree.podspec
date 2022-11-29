@@ -10,7 +10,7 @@ Checkbox tree with nested items. Could be used as a tree or plain list. Fully cu
   s.homepage         = 'https://github.com/aporohov/APCheckboxTree.git'
   s.authors          = { 'Artem Porohov' => 'aporohov@gmail.com' }
   s.license          = { :type => 'MIT', :file => 'LICENSE.md' }
-  s.source           = { :git => 'https://gitlab.services.mts.ru/mobile-sdk/ios/mtsds.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/aporohov/APCheckboxTree.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '13.0'
   s.swift_version = '5'
