@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary          = 'Checkboxes tree structure based on UIView'
 
   s.description      = <<-DESC
-List of checkboxes with nested items
+Checkbox tree with nested items. Could be used as a tree or plain list. Fully customizable view.
                        DESC
 
   s.homepage         = 'https://github.com/aporohov/APCheckboxTree.git'
