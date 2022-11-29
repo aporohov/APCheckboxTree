@@ -64,7 +64,12 @@ open class APCheckboxTreeStyle<T: APCheckboxItem> {
 #if SWIFT_PACKAGE
         let bundle = Bundle.module
 #else
+        let mainBundle = Bundle(for: APCheckboxTree.self)
+        guard let url = mainBundle.url(forResource: "APCheckboxTree", withExtension: "bundle") else {
+            return
+        }
         
+        let bundle = Bundle(url: url)
 #endif
         
         images.checkboxOn = UIImage(named: "icCheckboxOn", in: bundle, compatibleWith: nil)

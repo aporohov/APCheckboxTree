@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:APCheckboxTree.podspec">
+   </FileRef>
+   <FileRef
       location = "group:Demo/CheckboxTree-Demo.xcodeproj">
    </FileRef>
 </Workspace>
