@@ -26,8 +26,10 @@ class CustomItemViewController: UIViewController {
         checkboxList.style.images.checkboxOn = UIImage(systemName: "heart.fill")?.withTintColor(.red, renderingMode: .alwaysOriginal)
         checkboxList.style.images.checkboxOff = UIImage(systemName: "heart")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
         
+        // Set items
         checkboxList.items = items
         
+        // Set delegate
         checkboxList.delegate = self
         
         view.addSubview(checkboxList)
