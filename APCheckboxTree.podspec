@@ -8,7 +8,7 @@ List of checkboxes with nested items
                        DESC
 
   s.homepage         = 'https://github.com/aporohov/APCheckboxTree.git'
-  s.authors          = 'Artem Porohov' => 'aporohov@gmail.com'
+  s.authors          = { 'Artem Porohov' => 'aporohov@gmail.com' }
   s.license          = { :type => 'MIT', :file => 'LICENSE.md' }
   s.source           = { :git => 'https://gitlab.services.mts.ru/mobile-sdk/ios/mtsds.git', :branch => "develop" }
 
