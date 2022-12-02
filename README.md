@@ -1,5 +1,8 @@
 # APCheckboxTree
 ![Language](https://img.shields.io/badge/language-Swift%205-orange.svg)
+[![Platform](https://img.shields.io/cocoapods/p/APCheckboxTree.svg?style=flat)](http://cocoadocs.org/docsets/APCheckboxTree)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/APCheckboxTree.svg)](https://img.shields.io/cocoapods/v/APCheckboxTree.svg)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/aporohov/APCheckboxTree/master/LICENSE)
 
 Easy-to-use library to build checkbox tree out of plain item models. Fully customizable.
 
